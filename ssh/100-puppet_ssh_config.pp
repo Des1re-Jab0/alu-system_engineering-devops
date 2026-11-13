@@ -1,3 +1,4 @@
+# Configures the SSH client to use ~/.ssh/school and refuse password authentication
 file_line { "Turn off passwd auth":
   ensure => present,
   path   => "/etc/ssh/ssh_config",
