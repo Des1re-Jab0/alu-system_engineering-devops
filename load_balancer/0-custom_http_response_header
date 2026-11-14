@@ -2,7 +2,7 @@
 # Configures Nginx to add an X-Served-By header containing the server hostname
 sudo apt-get update -y
 sudo apt-get install -y nginx
-if ! grep -q "X-Served-By" /etc/nginx/sites-available/default; then
-  sudo sed -i "0,/server {/s//server {\n\tadd_header X-Served-By \$hostname;/" /etc/nginx/sites-available/default
-fi
-sudo nginx -t && sudo service nginx restart
+sudo sed -i "/X-Served-By/d" /etc/nginx/sites-available/default
+echo "add_header X-Served-By \$hostname always;" | sudo tee /etc/nginx/conf.d/custom_header.conf > /dev/null
+sudo nginx -t
+sudo service nginx restart
