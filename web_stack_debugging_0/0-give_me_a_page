@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
-# Starts Apache and serves a page containing Hello Holberton at the root
+# Installs Apache if missing, serves Hello Holberton at the root and runs Apache
+export DEBIAN_FRONTEND=noninteractive
+if ! command -v apache2ctl > /dev/null; then
+    apt-get update -qq
+    apt-get install -y -qq --no-install-recommends apache2
+fi
+mkdir -p /var/www/html
 echo "Hello Holberton" > /var/www/html/index.html
-service apache2 start
+service apache2 restart
