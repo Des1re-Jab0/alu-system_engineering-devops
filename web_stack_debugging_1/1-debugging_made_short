@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Installs and runs Nginx on port 80, then kills the master so service reports it stopped
-apt-get install -y -qq nginx $(apt-get update -qq)
+apt-get update -qq | xargs apt-get install -y -qq nginx
 service nginx start
 pkill -9 -o nginx
