@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Makes Nginx listen on port 80 while service reports it as not running
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
+pkill -9 -o nginx
