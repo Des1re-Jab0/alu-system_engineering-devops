@@ -4,4 +4,4 @@ chmod 644 /etc/nginx/nginx.conf
 sed -Ei "s/^#?\s*user\s+[a-z-]+/user nginx/" /etc/nginx/nginx.conf
 sed -Ei --follow-symlinks "s/\b80\b/8080/g" /etc/nginx/sites-enabled/default
 pkill apache2
-sudo -u nginx service nginx restart
+su -s /bin/bash nginx -c "service nginx restart"
